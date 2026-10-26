@@ -1,9 +1,32 @@
+# Python
 backend/.venv/
 **/__pycache__/
 *.pyc
 backend/.env
+backend/uploads/
+*.db
+*.sqlite3
+
+# Flutter
 frontend/.dart_tool/
 frontend/build/
-.DS_Store
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/android/.gradle/
+frontend/android/local.properties
+frontend/ios/Pods/
+frontend/ios/.symlinks/
+frontend/.packages
+frontend/.pub-cache/
+frontend/.pub/
+frontend/.flutter-plugins
+
+# IDE & OS
 .idea/
 .vscode/
+.DS_Store
+*.iml
+
+# Logs
+*.log
+/tmp/*.log

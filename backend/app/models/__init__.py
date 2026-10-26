@@ -69,6 +69,8 @@ class User(Base):
     language_pref: Mapped[str] = mapped_column(String(8), default="en")
     city: Mapped[str | None] = mapped_column(String(120), nullable=True)
     country: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    full_address: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    place: Mapped[str | None] = mapped_column(String(120), nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
@@ -182,6 +184,8 @@ class Rider(Base):
     current_lng: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     city: Mapped[str | None] = mapped_column(String(120), nullable=True)
     country: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    full_address: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    place: Mapped[str | None] = mapped_column(String(120), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     user: Mapped[User] = relationship(back_populates="rider_profile")
@@ -206,6 +210,8 @@ class Order(Base):
     address: Mapped[str] = mapped_column(String(500))
     city: Mapped[str | None] = mapped_column(String(120), nullable=True)
     country: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    full_address: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    place: Mapped[str | None] = mapped_column(String(120), nullable=True)
     lat: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     lng: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
@@ -317,3 +323,7 @@ class Complaint(Base):
     description: Mapped[str] = mapped_column(Text)
     status: Mapped[str] = mapped_column(String(32), default="open")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+from app.models.card import SavedCard, Wallet
+
+from app.models.notification import Notification, Message
